@@ -6,14 +6,12 @@ require 'open-uri'
 require 'archive/zip'
 
 module Chromedriver
-
   def self.set_version(version)
     Chromedriver::Helper.new.update(version)
   end
 
   class Helper
-
-    def run *args
+    def run(*args)
       download
       exec "#{compatibility} #{binary_path} #{args.join(' ')}"
     end
@@ -116,12 +114,11 @@ module Chromedriver
     def platform
       cfg = RbConfig::CONFIG
       case cfg['host_os']
-        when /linux/ then
-          cfg['host_cpu'] =~ /x86_64|amd64/ ? "linux64" : "linux32"
-        when /darwin/ then "mac"
-        else "win"
+      when /linux/ then
+        cfg['host_cpu'] =~ /x86_64|amd64/ ? "linux64" : "linux32"
+      when /darwin/ then "mac"
+      else "win"
       end
     end
-
   end
 end

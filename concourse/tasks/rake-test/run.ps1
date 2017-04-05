@@ -1,4 +1,3 @@
-
 . "nokogiri-ci\concourse\shared\common.ps1"
 
 prepend-path $ruby23_bin_path
@@ -10,3 +9,4 @@ push-location chromedriver-helper
     stream-cmd "bundle" "install"
     stream-cmd "bundle" "exec rake spec"
 
+pop-location
